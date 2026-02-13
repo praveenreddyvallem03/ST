@@ -1,25 +1,24 @@
 name: st
-
 on:
   schedule:
-    # Start job at 9:14 AM IST (03:44 UTC) Monday–Friday
-    - cron: "44 3 * * 1-5"
+    # Start job at 9:00 AM IST (03:30 UTC) Monday–Friday
+    - cron: "30 3 * * 1-5"
   workflow_dispatch: # allows manual run
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
-
+      
       - name: Run Maven Project Until 11:30 AM IST
         run: |
           # Calculate today's end time (11:30 AM IST) in epoch
